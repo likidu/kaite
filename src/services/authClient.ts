@@ -31,15 +31,15 @@ type ApiResponse<T> = {
 
 export class AuthClient {
   private static config: AuthConfig = {
-    clientId: 'ZGVuQTZibjJIeWJsRGs2RnZkQm86MTpjaQ',
-    baseUrl:
-      process.env.NODE_ENV === 'development'
-        ? 'http://localhost:8100/https://api.twitter.com'
-        : 'https://api.twitter.com',
-    redirectUri:
-      process.env.NODE_ENV === 'development'
-        ? 'http://localhost:5000'
-        : 'https://dev.nothing.kaite/oauth',
+    clientId: 'RjFDQnJGUEdZUkt5Szd0bkFpbUI6MTpjaQ',
+    baseUrl: 'https://api.twitter.com',
+      // process.env.NODE_ENV === 'development'
+      //   ? 'http://localhost:8100/https://api.twitter.com'
+      //   : 'https://api.twitter.com',
+    redirectUri: 'https://likidu.github.io/kaite-callback/',
+      // process.env.NODE_ENV === 'development'
+      //   ? 'http://localhost:5000'
+      //   : 'https://dev.nothing.kaite/oauth',
   };
 
   // Helpers

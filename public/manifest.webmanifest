@@ -1,11 +1,9 @@
 {
   "lang": "en-US",
-  "name": "Kaite",
-  "id": "kaite",
-  "short_name": "Kaite",
-  "categories": [
-    "social"
-  ],
+  "name": "KaitePR",
+  "id": "kaitepr",
+  "short_name": "KaitePR",
+  "categories": ["social"],
   "description": "A Twitter client for KaiOS",
   "theme_color": "#1DA1F2",
   "background_color": "#ffffff",
@@ -29,7 +27,7 @@
   "start_url": "/index.html",
   "orientation": "portrait-primary",
   "b2g_features": {
-    "version": "1.9.0",
+    "version": "1.9.3",
     "subtitle": "A Twitter client for KaiOS",
     "permissions": {
       "systemXHR": {
@@ -43,11 +41,8 @@
       "name": "Garrett Downs",
       "url": "https://nothing.dev"
     },
-    "redirects": [
-      {
-        "from": "https://dev.nothing.kaite/oauth",
-        "to": "/index.html"
-      }
-    ]
+    "serviceworker": {
+      "script_url": "service-worker.js"
+    }
   }
 }

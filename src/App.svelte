@@ -79,7 +79,16 @@
   onMount(async () => {
     KaiAds.startListening();
 
-    const code = window.location.search.split('code=')[1];
+    if ('serviceWorker' in navigator) {
+      // Service worker supported
+      navigator.serviceWorker.register('/service-worker.js');
+    }
+
+    // const code = window.location.search.split('code=')[1];
+    const urlParams = new URLSearchParams(window.location.search);
+    const code = urlParams.get('code');
+    console.log(`code is ${code}`);
+
     if (code) {
       console.log('is oauth flow');
       replace(`/oauth?code=${code}`);

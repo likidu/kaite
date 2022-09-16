@@ -16,7 +16,16 @@
   registerView({});
 
   async function login() {
-    const windowRef = window.open(AuthClient.buildLoginUrl());
+    // const windowRef = window.open(AuthClient.buildLoginUrl());
+
+    // TODO: Use updated version of kaios-lib that supports KaiOS 3
+    const url = AuthClient.buildLoginUrl();
+    const activity = new WebActivity('view', {
+      type: 'url',
+      url: url,
+    });
+    activity.start();
+
     const timer = setInterval(() => {
       const user = Storage.getItem('authenticated_user');
       if (user) {
@@ -40,7 +49,8 @@
           <img src="/images/icon_112.png" alt="" />
         </div>
         <Typography align="center" padding="both">
-          Hello! Welcome to Kaite, a Twitter app for KaiOS. Log in below to get started.
+          Hello! Welcome to Kaite, a Twitter app for KaiOS. Log in below to get
+          started.
         </Typography>
         <Button
           title="Log In"
