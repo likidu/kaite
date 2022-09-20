@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { register } from 'register-service-worker';
   import OnyxApp from 'onyx-ui/components/app/OnyxApp.svelte';
   import { Priority } from 'onyx-ui/enums';
   import { KeyManager, Onyx } from 'onyx-ui/services';
@@ -80,26 +81,18 @@
   onMount(async () => {
     KaiAds.startListening();
 
-    if ('serviceWorker' in navigator) {
-      // Service worker supported
-      try {
-        const reg = await navigator.serviceWorker.register(
-          '/service-worker.js'
-        );
-        reg.addEventListener('updatefound', () => {
-          // If updatefound is fired, it means that there's
-          // a new service worker being installed.
-          const installingWorker = reg.installing;
-          console.warn(
-            'A new service worker is being installed:',
-            installingWorker
-          );
-        });
-        console.warn(`Service Worker registered: ${JSON.stringify(reg)}`);
-      } catch (error) {
-        console.error(`Service Worker register failed: ${error}`);
-      }
-    }
+    register('/service-worker.js', {
+      registrationOptions: { scope: './' },
+      ready(registration) {
+        console.log('Service worker is active.');
+      },
+      registered(registration) {
+        console.warn(registration.active.state);
+      },
+      error(error) {
+        console.error('Error during service worker registration:', error);
+      },
+    });
 
     // const code = window.location.search.split('code=')[1];
     const urlParams = new URLSearchParams(window.location.search);

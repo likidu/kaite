@@ -30,6 +30,7 @@
     "@tsconfig/svelte": "^2.0.0",
     "commitizen": "^4.2.4",
     "cz-conventional-changelog": "^3.3.0",
+    "register-service-worker": "^1.7.2",
     "rollup": "^2.3.4",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-css-only": "^3.1.0",

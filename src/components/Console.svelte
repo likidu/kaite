@@ -21,9 +21,9 @@
 
 <div id="console-errors">
   {#if warn}
-    <p class="line-clamp-2 text-orange-300 ">{warn}</p>
+    <p class="line-clamp-2 text-orange-300 ">{JSON.stringify(warn)}</p>
   {/if}
   {#if error}
-    <p class="line-clamp-2 text-red-300">{error}</p>
+    <p class="line-clamp-2 text-red-300">{JSON.stringify(error)}</p>
   {/if}
 </div>

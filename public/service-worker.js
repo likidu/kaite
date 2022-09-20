@@ -1,5 +1,7 @@
 //The service worker
 self.onsystemmessage = (evt) => {
+  console.warn('onsystemmessage');
+
   const serviceHandler = () => {
     if (evt.name === 'activity') {
       console.warn('About to handle activity.');

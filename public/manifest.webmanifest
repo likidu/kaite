@@ -26,26 +26,28 @@
   ],
   "start_url": "/index.html",
   "orientation": "portrait-primary",
-  "serviceworker": {
-    "script_url": "service-worker.js"
-  },
   "b2g_features": {
     "version": "1.9.5",
     "subtitle": "A Twitter client for KaiOS",
-    "permissions": {
-      "systemXHR": {
-        "description": "Required to communicate with Twitter and other vital functions."
-      }
-    },
     "type": "signed",
+    "core": true,
     "focus_color": "#1DA1F2",
     "origin": "http://kaite.localhost",
     "developer": {
       "name": "Garrett Downs",
       "url": "https://nothing.dev"
     },
+    "csp": "default-src *; script-src 'self'; object-src 'none'; style-src 'self' 'unsafe-inline'",
+    "permissions": {
+      "systemXHR": {
+        "description": "Required to communicate with Twitter and other vital functions."
+      }
+    },
     "serviceworker": {
       "script_url": "service-worker.js"
+    },
+    "activities": {
+      "kaiteCallback": {}
     }
   }
 }
