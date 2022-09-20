@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { replace } from 'svelte-spa-router';
   import Card from 'onyx-ui/components/card/Card.svelte';
   import CardContent from 'onyx-ui/components/card/CardContent.svelte';
   import CardHeader from 'onyx-ui/components/card/CardHeader.svelte';
@@ -17,9 +18,10 @@
     if (!code) return;
 
     await AuthClient.getTokensFromCode(code).catch((err) =>
-      console.log('fetchTokensFromCode err', err)
+      console.error('fetchTokensFromCode err', err)
     );
-    window.close();
+    // window.close();
+    replace('/');
   });
 
   onMount(async () => {

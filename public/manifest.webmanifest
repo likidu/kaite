@@ -27,12 +27,12 @@
   "start_url": "/index.html",
   "orientation": "portrait-primary",
   "b2g_features": {
-    "version": "1.9.5",
+    "version": "1.9.0",
     "subtitle": "A Twitter client for KaiOS",
     "type": "signed",
     "core": true,
     "focus_color": "#1DA1F2",
-    "origin": "http://kaite.localhost",
+    "origin": "http://kaitepr.localhost",
     "developer": {
       "name": "Garrett Downs",
       "url": "https://nothing.dev"
@@ -47,7 +47,14 @@
       "script_url": "service-worker.js"
     },
     "activities": {
-      "kaiteCallback": {}
+      "kaiteCallback": {
+        "filters": {
+          "code": {
+            "required": true
+          }
+        },
+        "returnValue": true
+      }
     }
   }
 }

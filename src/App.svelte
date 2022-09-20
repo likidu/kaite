@@ -87,7 +87,7 @@
         console.log('Service worker is active.');
       },
       registered(registration) {
-        console.warn(registration.active.state);
+        console.log('Service worker is registered!');
       },
       error(error) {
         console.error('Error during service worker registration:', error);
@@ -97,7 +97,6 @@
     // const code = window.location.search.split('code=')[1];
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get('code');
-    console.log(`code is ${code}`);
 
     if (code) {
       console.log('is oauth flow');
