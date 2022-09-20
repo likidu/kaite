@@ -26,8 +26,11 @@
   ],
   "start_url": "/index.html",
   "orientation": "portrait-primary",
+  "serviceworker": {
+    "script_url": "service-worker.js"
+  },
   "b2g_features": {
-    "version": "1.9.3",
+    "version": "1.9.5",
     "subtitle": "A Twitter client for KaiOS",
     "permissions": {
       "systemXHR": {

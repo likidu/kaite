@@ -2,6 +2,7 @@
 self.onsystemmessage = (evt) => {
   const serviceHandler = () => {
     if (evt.name === 'activity') {
+      console.warn('About to handle activity.');
       handler = evt.data.webActivityRequestHandler();
       const { name: activityName, data: activityData } = handler.source;
       if (activityName === 'kaiteCallback') {

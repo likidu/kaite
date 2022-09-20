@@ -6,6 +6,7 @@
   import Router, { location, pop, replace } from 'svelte-spa-router';
   import AppMenu from './components/AppMenu.svelte';
   import AppSettings from './routes/AppSettings.svelte';
+  import Console from './components/Console.svelte';
   import Compose from './routes/Compose.svelte';
   import Home from './routes/Home.svelte';
   import ListFollowers from './routes/ListFollowers.svelte';
@@ -81,7 +82,23 @@
 
     if ('serviceWorker' in navigator) {
       // Service worker supported
-      navigator.serviceWorker.register('/service-worker.js');
+      try {
+        const reg = await navigator.serviceWorker.register(
+          '/service-worker.js'
+        );
+        reg.addEventListener('updatefound', () => {
+          // If updatefound is fired, it means that there's
+          // a new service worker being installed.
+          const installingWorker = reg.installing;
+          console.warn(
+            'A new service worker is being installed:',
+            installingWorker
+          );
+        });
+        console.warn(`Service Worker registered: ${JSON.stringify(reg)}`);
+      } catch (error) {
+        console.error(`Service Worker register failed: ${error}`);
+      }
     }
 
     // const code = window.location.search.split('code=')[1];
@@ -110,5 +127,6 @@
 
 <OnyxApp>
   <AppMenu slot="app-menu" />
+  <Console />
   <Router {routes} />
 </OnyxApp>
